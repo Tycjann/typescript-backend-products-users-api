@@ -1,7 +1,7 @@
 import {Tags} from '../enums/Tags.enum';
 
 export interface Product {
-  id?: number;
+  id?: string;
   name: string;
   price: string;
   count: string;
