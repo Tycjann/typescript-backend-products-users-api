@@ -1,7 +1,6 @@
 import { UsersRepository } from './UsersRepository.interface';
 import { User } from '../interfaces/User.interface';
-import { nanoid } from 'nanoid';
-
+import shortid from 'shortid';
 
 export class UsersTableRepository implements UsersRepository {
   private users: Array<User> = [];
@@ -15,7 +14,7 @@ export class UsersTableRepository implements UsersRepository {
   }
 
   addItem(item: User): User {
-    item.id = nanoid();
+    item.id = shortid.generate();
     return item;
   }
 
@@ -40,6 +39,10 @@ export class UsersTableRepository implements UsersRepository {
 
   findUserById(id: string): User {
     return this.users.find(user => (user.id === id));
+  }
+
+  findUserByFirstName(name: string): User {
+    return this.users.find(user => (user.nameFirst === name));
   }
 
 }

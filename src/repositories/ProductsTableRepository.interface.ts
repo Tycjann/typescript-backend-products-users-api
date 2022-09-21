@@ -1,6 +1,6 @@
 import { ProductsRepository } from './ProductsRepository.interface';
 import { Product } from '../interfaces/Product.interface';
-import { nanoid } from 'nanoid';
+import shortid from 'shortid';
 
 export class ProductsTableRepository implements ProductsRepository {
   private products: Array<Product> = [];
@@ -14,7 +14,7 @@ export class ProductsTableRepository implements ProductsRepository {
   }
 
   addItem(item: Product): Product {
-    item.id = nanoid();
+    item.id = shortid.generate();
     item.dateCreated = new Date();
     item.dateModified = new Date();
     this.products.push(item);
